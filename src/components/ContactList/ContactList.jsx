@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 const ContactList = ({ contacts }) => {
   return (
     <ul>
-      {contacts.map(({ name, id }) => {
+      {contacts.map(({ name, number, id }) => {
         return (
           <li key={id}>
             <span>{name}:</span>
+            <span>{number}</span>
           </li>
         );
       })}
@@ -18,6 +19,7 @@ ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired,
     })
   ),
