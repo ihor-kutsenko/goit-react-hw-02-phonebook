@@ -1,15 +1,21 @@
 import PropTypes from 'prop-types';
+import { RiDeleteBinLine } from 'react-icons/ri';
+import css from './ContactList.module.css';
 
 const ContactList = ({ contacts, onDelete }) => {
   return (
-    <ul>
+    <ul className={css.list}>
       {contacts.map(({ name, number, id }) => {
         return (
-          <li key={id}>
-            <span>{name}:</span>
-            <span>{number}</span>
-            <button type="button" onClick={() => onDelete(id)}>
-              Delete
+          <li key={id} className={css.item}>
+            <span className={css.name}>{name}:</span>
+            <span className={css.phone}>{number}</span>
+            <button
+              type="button"
+              className={css.button}
+              onClick={() => onDelete(id)}
+            >
+              <RiDeleteBinLine size="16" />
             </button>
           </li>
         );

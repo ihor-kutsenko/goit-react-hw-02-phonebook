@@ -3,13 +3,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import notifyOptions from './NotifyOptions/NotifyOptions';
 
+import MainContainer from './MainContainer/MainContainer';
 import Section from './Section/Section';
 import ContactForm from './ContactForm/ContactForm';
 import Header from './Header/Header';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import dafaultContacts from './contacts.json';
-import css from './App.module.css';
+import './App.module.css';
 
 export class App extends Component {
   state = {
@@ -70,7 +71,7 @@ export class App extends Component {
     );
 
     return (
-      <div className={css.container}>
+      <MainContainer>
         <Section title="Phonebook">
           <ContactForm onAddContact={this.addContact} />
           <Header title="Contacts" />
@@ -81,7 +82,7 @@ export class App extends Component {
           />
         </Section>
         <ToastContainer />
-      </div>
+      </MainContainer>
     );
   }
 }
