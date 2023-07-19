@@ -47,6 +47,22 @@ export class App extends Component {
     this.setState({ filter: e.currentTarget.value.toLowerCase() });
   };
 
+  deleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+
+    const deletedContact = this.state.contacts.find(
+      contact => contact.id === id
+    );
+    if (deletedContact) {
+      toast.warn(
+        `${deletedContact.name} was successfully deleted from your contacts`,
+        notifyOptions
+      );
+    }
+  };
+
   render() {
     const { contacts, filter } = this.state;
     const filteredContact = contacts.filter(contact =>
@@ -59,7 +75,10 @@ export class App extends Component {
           <ContactForm onAddContact={this.addContact} />
           <Header title="Contacts" />
           <Filter value={filter} onChange={this.searchFilter} />
-          <ContactList contacts={filteredContact} />
+          <ContactList
+            contacts={filteredContact}
+            onDelete={this.deleteContact}
+          />
         </Section>
         <ToastContainer />
       </div>
