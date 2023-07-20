@@ -12,8 +12,24 @@
   box-shadow: -1px -1px 15px #8ba793, 15px 15px 35px #fff;
 }
 
-.section h1 {
+@keyframes pulsateColor {
+  0% {
+    color: var(--accent-color);
+  }
+
+  50% {
+    color: #fff;
+  }
+
+  100% {
+    color: var(--accent-color);
+  }
+}
+
+.title {
   margin-bottom: 12px;
   text-align: center;
-  color: var(--accent-color);
+  color: transparent;
+  animation: pulsateColor 5s infinite;
+  animation-duration: 5s;
 }
